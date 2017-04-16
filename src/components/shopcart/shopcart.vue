@@ -10,12 +10,17 @@
           <div class="num" v-show="totalCount>0">{{totalCount}}</div>
         </div>
         <div class="price" :class="{'highlight':totalCount>0}">￥{{totalPrice}}元</div>
-        <div class="desc">{{payDesc}}</div>
+        <div class="desc">￥{{minPrice}}元起送</div>
       </div>
       <div class="content-right">
         <div class="pay" :class="payClass">
-          ￥{{minPrice}}元起送
+          {{payDesc}}
         </div>
+      </div>
+    </div>
+    <div class="ball-container">
+      <div v-for="ball in balls">
+
       </div>
     </div>
   </div>
@@ -27,12 +32,7 @@
          selectFoods: {
            type: Array,
            default() {
-               return [
-                 {
-                   price: 8,
-                   count: 4
-                 }
-               ];
+               return [];
            }
          },
          deliveryPrice: {
@@ -43,6 +43,17 @@
            type: Number,
            default: 0
          }
+     },
+     data() {
+       return {
+         balls: [
+           {show: false},
+           {show: false},
+           {show: false},
+           {show: false},
+           {show: false}
+         ]
+       };
      },
      computed: {
        totalPrice() {
