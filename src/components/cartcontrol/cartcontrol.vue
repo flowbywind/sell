@@ -19,8 +19,6 @@
         type: Object
       }
     },
-    created() {
-    },
     methods: {
       addCart(event) {
         if (!event._constructed) {
@@ -31,6 +29,7 @@
         } else {
           this.food.count++;
         }
+        this.$emit('addCart', event.target);
       },
       decreaseCart(event) {
         if (!event._constructed) {
